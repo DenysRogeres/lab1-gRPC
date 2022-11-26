@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package palavras;
+
+service ContadorPalavras {
+    rpc CalcularQuantidade (ListaPalavras) returns (QtdPalavras) {}
+
+    rpc VerificarPalavras (ListaPalavras) returns (stream PalavraVerificada) {}
+}
+
+
+message ListaPalavras {
+    repeated string palavras = 1;
+}
+
+message QtdPalavras {
+    int32 quantidadePalavras = 1;
+}
+
+message PalavraVerificada {
+    string palavra = 1;
+    int32 quantidade = 2;
+}
